@@ -1,0 +1,574 @@
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title> Eatopia Kitchen</title>
+
+<style>
+H1{font-size:70px; margin-top:0}
+
+.top-bar {background-image:url("d.png"); background-size:cover; background-position:top-center; height:160px; position: relative; padding-top:0; display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap;}
+
+.task-bar {background-image: url("task bar.png"); background-size: cover; background-position: top-center; height: 100px; display: flex;  justify-content: center; align-items: center; }  
+
+H2{font-size:35px;}
+
+BODY {
+    background-image: linear-gradient(180deg,#fff 0%, #fff8ef 100%);
+    background-attachment: fixed; 
+    margin: 0; 
+}
+
+.button-link {
+  text-decoration: none; 
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; 
+  color: white; 
+  border: 1px solid #0056b3;
+  border-radius: 5px; 
+  cursor: pointer; 
+  text-align: center;
+}
+
+.top-bar-image-right {
+    position: absolute; top: 0.25px; right: 10px;       
+    width: 300px; 
+    height: 150px;       
+    object-fit: cover;
+}
+
+  #welcome-box-overlay {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); 
+            display: none; 
+             justify-content: center;
+            align-items: center;
+            z-index: 1000; 
+        }
+
+.welcome-modal {background-color: #f0f8ff; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); text-align: center; max-width: 400px; width: 90%; transform: scale(1); transition: transform 0.3s ease-out;}
+
+ .welcome-modal h2 {
+            color: #2c3e50; 
+            margin-top: 0;
+            font-family: sans-serif;
+        }
+
+.welcome-modal p {color: #34495e; font-family: Arial, sans-serif; line-height: 1.5; margin-bottom: 20px;}
+
+.welcome-modal button {background-color: #e74c3c; color: white; border: none; padding:10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.2s;}
+
+.welcome-modal button:hover {background-color: #c0392b; }
+
+#gallery-container {
+    position: relative; 
+    display: inline-block; 
+}
+
+#main-image {
+    display: block; 
+    width: 100%; 
+    height: auto;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.arrow-btn {
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    background: rgba(0, 0, 0, 0.5); 
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.arrow-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.arrow-btn img {
+    filter: invert(100%); 
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
+.left {
+    left: 10px; 
+}
+
+.right {
+    right: 10px; 
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateX(-20px); 
+}
+
+.fade-out-prev {
+    opacity: 0;
+    transform: translateX(-20px); 
+}
+
+.fade-out-next {
+    opacity: 0;
+    transform: translateX(20px); 
+}
+
+#kathi {
+    display: flex; 
+    align-items: flex-start; 
+    margin: 20px 0; 
+    flex-wrap: wrap; 
+}
+
+.fm{
+  display:flex;
+  gap:20px;
+  align-items:center;
+  justify-content:space-between;
+  padding:40px 20px;
+  background:linear-gradient(180deg,#fff 0%, #fff8ef 100%);
+  flex-wrap:wrap;
+}
+.fm-text{ flex:1 1 460px; min-width:260px; }
+.fm-text h1{ font-size:2.2rem; margin-bottom:8px; color:#0f172a; }
+.fm-text p{ color:var(--muted); margin-bottom:14px; }
+.fm-cta .btn{ margin-right:10px; }
+.fm-image{ flex:1 1 420px; display:flex; justify-content:center; }
+.fm-image img{ width:100%; max-width:480px; border-radius:16px; box-shadow:0 8px 24px var(--shadow); display:block; }
+
+.modal-actions{ display:flex; gap:10px; justify-content:flex-end; padding:12px 16px; border-top:1px solid #f4f4f4; }
+.btn{ padding:8px 12px; border-radius:10px; font-weight:700; border:0; cursor:pointer; }
+.primary{ background:var(--accent); color:white; background-color:Orange; radius:7px}
+.ghost{ background:transparent; border:1px solid #e6e6e6; color:#111827; }
+
+.menu{ padding:25px 0; background-color:White;}
+.menu h2{ text-align:center; margin-bottom:6px; }
+.menu .muted{ text-align:center; color:var(--muted); margin-bottom:18px; }
+
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;
+  margin-top:18px;
+}
+.menu-item{
+  background:var(--card);
+  border-radius:12px;
+  box-shadow:0 8px 20px var(--shadow);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.menu-item:hover{ transform:translateY(-8px); box-shadow:0 18px 40px rgba(15,15,15,0.12); }
+.menu-item img{ width:100%; height:180px; object-fit:cover; display:block; }
+.menu-item .body{ padding:12px 14px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.menu-item h3{ margin:0; font-size:1.05rem; }
+.menu-item p{ margin:0; color:var(--muted); font-size:0.95rem; }
+.menu-item .meta{ display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+.menu-item .price{ font-weight:800; }
+.menu-item .add-btn{ background:var(--accent); color:#fff; padding:8px 10px; border-radius:10px; border:0; cursor:pointer; font-weight:700; }
+
+.contact-form{ display:flex; flex-direction:column; gap:10px; width:100%; max-width:640px; margin:12px auto 0; }
+.contact-form input, .contact-form textarea{
+  padding:10px; border-radius:8px; border:1px solid #e6e6e6;
+}
+
+.top-bar-branding { display: fles; align-items: center; gap: 10px;}
+
+</style>
+</head>
+
+<body style="margin:0">
+
+<div id="welcome-box-overlay">
+        <div class="welcome-modal">
+            <h2>🎉 Welcome to Eatopia Kitchen! </h2>
+<h1><center> 🍽️ <center></h1>
+            <p>
+                Find out everything about the World's <b style="font-size:25px; color:Red; font-family:Georgia">Top Fast Food Chain!</b>
+            </p>
+
+            <p>
+           Check out Our Menu and new <a href="OFFERS.html"><u style="color:Orange;font-family:Trebuchet;font-size:20px">Diwali Offers!</u></a>
+            <p>
+                Click below to continue to the deliciousness.
+            </p>
+            <button onclick="closeWelcomeBox()">
+               Close 
+            </button>
+        </div>
+    </div>
+<script>
+const welcomeOverlay = document.getElementById('welcome-box-overlay');
+        
+function showWelcomeBox() {
+    welcomeOverlay.style.display = 'flex';
+}
+
+function closeWelcomeBox() {
+    welcomeOverlay.style.display = 'none';
+    localStorage.setItem('hasVisited', 'true');
+}
+
+function checkVisitStatus() {
+    const hasVisited = localStorage.getItem('hasVisited');
+    if (!hasVisited) {
+        showWelcomeBox();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', checkVisitStatus); 
+        
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        if (welcomeOverlay.style.display === 'flex') {
+            closeWelcomeBox();
+        }
+    }
+});
+    </script>
+
+<div class="top-bar">
+&nbsp&nbsp&nbsp&nbsp&nbsp
+<div class="top-bar-branding">
+
+<img src="Eatopia Text.png" alt="Eatopia Kitchens" height="150" > 
+
+<img src="EATOPIA.png" alt="Restaurant Logo" height="150px" width="150px" >
+</div>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="index.html" class="button-link"> <span style="font-size:25px; font-family:Rockwell;"> Home </span></a>   
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="MENU.html"  class="button-link"><span style="font-size:25px; font-family:Rockwell;"> Menu and Ordering</span> </a>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="OFFERS.html" class="button-link"> <span style="font-size:25px; font-family:Rockwell;"> Offers </span></a>
+
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="MENU.html#order"  class="button-link"><span style="font-size:25px; font-family:Rockwell;"> Order Completion </span> </a>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="index.html#contact" class="button-link"><span style="font-size:25px; font-family:Rockwell;"> Contact Us</span> </a>
+</div>
+
+
+  <section id="home" class="fm">
+    <div class="fm-text" style="font-family:Verdana">
+      <h1>Food from Utopia. Fresh, Fast and Finger Lickin' </h1>
+      <p style="font-size:20px">Your favorite meals from our kitchen to your couch in minutes.</p>
+      <div class="fm-cta">
+<a href="Menu.html">
+        <button class="btn primary"><span style="font-size:18px">Explore Menu</span></button>
+</a>
+
+<a href="Menu.html#order">
+        <button class="btn ghost"><span style="font-size:18px">Come and Order</span></button>
+</a>
+      </div>
+    </div>
+    <div class="fm-image">
+      <img src="fm-burger.jpg" alt="Delicious food">
+    </div>
+  </section>
+
+      </div>
+    </div>
+  </section>
+
+<section id="menu" class="menu">
+<span style="font-family:Arial">
+    <div class="container">
+      <h2>Our Popular Dishes</h2>
+      <p class="muted">Select from our chef’s specials made fresh every day.</p>
+      <div id="menu-items" class="menu-grid"><article class="menu-item">
+      <img src="pizza.jpg" alt="Cheesy Pizza">
+      <div class="body">
+        <h3>Veggie Cheesy Pizza</h3>
+        <p class="muted">Hand Tossed &amp; Fluffy.</p>
+        <div class="meta">
+          <div class="price">₹119</div>
+        </div>
+      </div>
+    </article><article class="menu-item">
+      <img src="fm-burger.jpg" alt="Classic Burger">
+      <div class="body">
+        <h3>Classic Burger</h3>
+        <p class="muted">Cheezy &amp; Saucy.</p>
+        <div class="meta">
+          <div class="price">₹79</div>
+        </div>
+      </div>
+    </article><article class="menu-item">
+      <img src="French.jpg" alt="French Fries">
+      <div class="body">
+        <h3>French Fries</h3>
+        <p class="muted">Yummy &amp; Crispy.</p>
+        <div class="meta">
+          <div class="price">₹69</div>
+        </div>
+      </div>
+    </article><article class="menu-item">
+      <img src="HCP.jpg" alt="Honey Chilli Potato">
+      <div class="body">
+        <h3>Honey Chilli Potato</h3>
+        <p class="muted">Chilli & Honeylicious</p>
+        <div class="meta">
+          <div class="price">₹89</div>
+        </div>
+      </div>
+    </article><article class="menu-item">
+      <img src="VEGGIE.jpg" alt="Veggie Roll">
+      <div class="body">
+        <h3>Veggie Roll</h3>
+        <p class="muted">Deliciously Fresh & Crunchy</p>
+        <div class="meta">
+          <div class="price">₹79</div>
+        </div>
+      </div>
+    </article></div>
+    </div>
+</span>
+  </section>
+
+
+
+<br>
+<br>
+<br>
+
+<center>
+<div id="gallery-container">
+    <img id="main-image" src="DIWALIDHAMAKA.png" alt="Current Image" width="500px" height="300px">
+    
+    <button class="arrow-btn left" onclick="changeImage(-1)">
+        <img src="Arrow to the left.png" alt="Previous" width="50" height="50">
+    </button>
+    <button class="arrow-btn right" onclick="changeImage(1)">
+        <img src="Arrow to the right.png" alt="Next" width="50" height="50">
+    </button>
+</div>
+</center>
+
+<br>
+<br>
+<br>
+
+
+<br>
+<br>
+<br>
+
+<div id="Kathi">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+<img src="Kathi.png" alt="Kathi Roll" height="600px" width="600px"> 
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<img src="Curious.png" alt="Try out the new KATHI ROLLS!" height="600px" width="600px">
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<img src="DIWALICOMBO.png" alt="Diwali Combo" height="540px" width="1521px">
+
+<br>
+<br>
+<br>
+<br>
+
+<div id="India">
+<center>
+<img src="iNCREDIBLEiNDIA.png" alt="iNCREDIBLEiNDIA" height="500px" width="1000px>
+</center>
+</div>
+
+<br>
+<br>
+<br>
+<div id="about" class="about">
+<center>
+<br>
+<br>
+<span style="color:White; display: inline-block; background-color:Crimson; border: 2px solid black">
+<span style="font-size:70px;">
+&nbsp&nbsp Welcome to Eatopia! &nbsp&nbsp
+</span>
+<br>
+<span style="font-size:40px; font-family:Verdana;color:Orange;text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;">
+We would like to show you a Preview of all the 
+<br>
+things we have in store for you!
+</span>
+<br>
+<span style="font-size:30px">
+While making this site, Our Founders Bankebihari Srivastava
+<br>
+&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp &nbsp&nbsp &nbsp&nbsp&nbsp &nbsp and Atishay Jain made sure to provide their customers the best of amenities &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
+<br>
+Visit our Menu Page and Offers Page for full Information.
+<br>
+Do Not Forget to Order! 
+</span>
+<br>
+<b style="color:Yellow;font-size:40px">
+ Happy Eating!
+</b>
+<br>
+&nbsp 
+</span>
+</center>
+</div>
+
+<br>
+<br>
+
+<section id="contact" class="contact">
+    <div class="container">
+<span style="font-family:Verdana">
+      <h2>&nbsp&nbsp&nbspContact Us</h2>
+      <p class="muted"><span style="font-size:20px">&nbsp&nbsp&nbsp&nbsp&nbspIf You want to collaborate with us, Give us feedback or ask a Query, Feel free to Contact us!</span></p>
+
+      <form id="contactForm" class="contact-form" method="post" action="https://script.google.com/macros/s/AKfycbxet1ZI7KR6B-6z5IY3hvrzly2q84HfhV6iWXW5_9oSyXGAChEEIEPBKC095cvb2FWfSQ/exec">
+        <input type="text" name="name" placeholder="Your Name" required="">
+        <input type="email" name="email" placeholder="Your Email" required="">
+        <textarea name="message" rows="4" placeholder="Your Message" required="" style="height: 71px; width: 636px;"></textarea>
+        <button type="submit" class="btn primary">Send Message</button>
+        <button type="reset" class="btn primary">Reset Message</button>
+      </form>
+</span>
+    </div>
+  </section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="top-bar">
+&nbsp&nbsp&nbsp&nbsp&nbsp
+<div class="top-bar-branding">
+
+<img src="Eatopia Text.png" alt="Eatopia Kitchens" height="150" > 
+
+<img src="EATOPIA.png" alt="Restaurant Logo" height="150px" width="150px" >
+</div>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="index.html" class="button-link"> <span style="font-size:25px; font-family:Rockwell;"> Home </span></a>   
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="MENU.html"  class="button-link"><span style="font-size:25px; font-family:Rockwell;"> Menu and Ordering</span> </a>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="OFFERS.html" class="button-link"> <span style="font-size:25px; font-family:Rockwell;"> Offers </span></a>
+
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="MENU.html#order"  class="button-link"><span style="font-size:25px; font-family:Rockwell;"> Order Completion </span> </a>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="index.html#contact" class="button-link"><span style="font-size:25px; font-family:Rockwell;"> Contact Us</span> </a>
+</div>
+
+
+
+
+<script>
+const images = [
+    "DIWALIDHAMAKA.png", 
+    "ChinaTown.png", 
+    "BREAKFAST.png", 
+    "DESSERTS.png" 
+];
+
+let currentIndex = 0;
+const mainImageElement = document.getElementById('main-image');
+let isTransitioning = false;
+const transitionTime = 150; 
+const autoplayDelay = 1000; 
+let autoplayInterval; 
+
+function startAutoplay() {
+    autoplayInterval = setInterval(() => {
+        changeImage(1);
+    }, autoplayDelay);
+}
+
+function stopAutoplay() {
+    clearInterval(autoplayInterval);
+}
+
+function changeImage(direction) {
+    if (autoplayInterval && arguments.length > 0) {
+        stopAutoplay();
+        startAutoplay();
+    }
+    
+    if (isTransitioning) return;
+    isTransitioning = true;
+    
+    const fadeOutClass = (direction === 1) ? 'fade-out-next' : 'fade-out-prev';
+    
+    mainImageElement.classList.add(fadeOutClass);
+
+    setTimeout(() => {
+        let newIndex = currentIndex + direction;
+
+        if (newIndex >= images.length) {
+            newIndex = 0; 
+        } else if (newIndex < 0) {
+            newIndex = images.length - 1;
+        }
+
+        currentIndex = newIndex;
+
+        mainImageElement.src = images[currentIndex];
+        mainImageElement.alt = "Image " + (currentIndex + 1) + " of " + images.length;
+
+        mainImageElement.classList.remove(fadeOutClass);
+        
+        setTimeout(() => {
+             isTransitioning = false;
+        }, transitionTime);
+
+    }, transitionTime); 
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    mainImageElement.src = images[currentIndex];
+    startAutoplay(); 
+});
+</script>
+</body>
+</html>
+
+
