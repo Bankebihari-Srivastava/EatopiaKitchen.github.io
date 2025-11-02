@@ -1,0 +1,393 @@
+<html>
+<head>
+<title> Eatopia Kitchen</title>
+
+<style>
+H1{font-size:70px;}
+
+.top-bar {background-image:url("d.png"); background-size:cover; background-position:top-center; height:160px; position: relative; padding-top:0; display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap;}
+
+.task-bar {background-image: url("task bar.png"); background-size: cover; background-position: top-center; height: 100px; display: flex;  justify-content: center; align-items: center; }  
+
+H2{font-size:35px;}
+
+BODY {
+    background-image: linear-gradient(to bottom, #fffeed, #fffbd3);
+    background-attachment: fixed; 
+    margin: 0; 
+}
+
+.button-link {
+  text-decoration: none; 
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; 
+  color: white; 
+  border: 1px solid #0056b3;
+  border-radius: 5px; 
+  cursor: pointer; 
+  text-align: center;
+}
+
+.top-bar-image-right {
+    position: absolute; top: 0.25px; right: 10px;       
+    width: 200px; 
+    height: 200px;       
+    object-fit: cover;
+}
+
+#welcome-box-overlay {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); 
+            display: none; 
+             justify-content: center;
+            align-items: center;
+            z-index: 1000; 
+        }
+
+.welcome-modal {background-color: #f0f8ff; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); text-align: center; max-width: 400px; width: 90%; transform: scale(1); transition: transform 0.3s ease-out;}
+
+ .welcome-modal h2 {
+            color: #2c3e50; 
+            margin-top: 0;
+            font-family: sans-serif;
+        }
+
+.welcome-modal p {color: #34495e; font-family: Arial, sans-serif; line-height: 1.5; margin-bottom: 20px;}
+
+.welcome-modal button {background-color: #e74c3c; color: white; border: none; padding:10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.2s;}
+
+.welcome-modal button:hover {background-color: #c0392b; }
+
+@keyframes slideFromLeft {
+  0%   { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.slide {
+  animation: slideFromLeft 0.75s ease-out forwards; 
+}
+
+#offer-slide-content, #diwali-slide, #diwali-codes-slide, #HAPPY2, #INCREDIBLEINDIA, #SCHEZWAN {
+    width: 100%
+    transform: translateX(-100%); 
+    opacity: 0;
+}
+
+.top-bar-branding { display: fles; align-items: center; gap: 10px;}
+
+</style>
+<script></script>
+
+</head>
+
+<body style="margin:0">
+<div id="welcome-box-overlay">
+        <div class="welcome-modal">
+            <h2>🎉 Welcome to Eatopia Kitchen! 🍽️</h2>
+            <p>
+                <center style="font-size:25px; color: Orange"><b>🪔HAPPY DIWALI OFFERS🪔</b></center>
+            </p>
+
+            <p>
+           Last Chance to avail our Diwali Offers.
+            <p>
+                <center style="color:Red; font-size:20px">Festive Offers Expire: 10 November 2025</center>
+            </p>
+<p> Use the Bonus Codes <a href="MENU.html" style="color:Navy; font-size:20px"> here</a>.</p>
+            <button onclick="closeWelcomeBox()">
+                Close
+            </button>
+        </div>
+    </div>
+
+<div class="top-bar">
+&nbsp&nbsp&nbsp&nbsp&nbsp
+<div class="top-bar-branding">
+
+<img src="Eatopia Text.png" alt="Eatopia Kitchens" height="150" > 
+
+<img src="EATOPIA.png" alt="Restaurant Logo" height="150px" width="150px" >
+</div>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="index.html" class="button-link"> <span style="font-size:25px; font-family:Rockwell;"> Home </span></a>   
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="MENU.html"  class="button-link"><span style="font-size:25px; font-family:Rockwell;"> Menu </span> </a>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="OFFERS.html" class="button-link"> <span style="font-size:25px; font-family:Rockwell;"> Offers </span></a>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="AboutUs.html" class="button-link"><span style="font-size:25px; font-family:Rockwell;"> About Us</span> </a>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="ContactUs.html" class="button-link"><span style="font-size:25px; font-family:Rockwell;"> Contact Us</span> </a>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="MENU.html#order"  class="button-link"><span style="font-size:25px; font-family:Rockwell;"> Order Completion</span> </a>
+</div>
+
+
+
+
+<div style="margin-left:20px; margin-right:20px; margin-top:20px"> 
+
+<div id="offer-slide-content">
+<center>
+<span style="color:White; display: inline-block; background-color:Crimson; border: 2px solid black"><span style="font-size:70px;">
+&nbsp &nbsp &nbspOFFERS&nbsp &nbsp &nbsp
+</span>
+<br>
+<span style="font-size:40px; font-family:Verdana;color:Orange;text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;">
+🪔Happy Diwali!🪔
+</span>
+<br>
+<span style="font-size:20px">
+Eatopia wishes all its customers a very Happy Diwali.
+<br>
+&nbsp &nbsp We are committed to keep our customers happy and so here are some Diwali 
+special codes for you to redeem!
+</span>
+<br>
+<b style="color:Yellow;font-size:25px">
+ Happy Eating!
+</b>
+<br>
+&nbsp 
+</span>
+</center>
+</div>
+<br>
+<center>
+<div  id="diwali-slide">
+<b style="font-size:50px; color:Black; text-shadow: -4px -2px 0 #f5f5f5;">
+DIWALI OFFERS FOR YOU
+</b>
+</div>
+</center>
+
+<div id="diwali-codes-slide" >
+<dl>
+ <dt>
+<h2>
+<span style="color:Black; display: inline-block; background-color:Yellow; border: 2px solid black; padding:10px">  
+#Offer 1:💥DIWALIDHAMAKA 💥
+</span>
+</h2>
+</dt>
+<DD>
+<b style="color:black; font-size:27px">
+Get 10% Discount on Order if the Value is greater than ₹200 as a Diwali Bonus!
+</b>
+</DD>
+<dt>
+<h2>
+<span style="color:Black; display: inline-block; background-color:Yellow; border: 2px solid black; padding:10px">  
+#Offer 2:🚫🧨NOPATAKHEDIWALI🧨🚫
+</span>
+</h2>
+</dt>
+<DD>
+<b style="color:black; font-size:27px">
+Get 20% Discount on Order if the value is greater than ₹750. Have a <span style="color:Green; background-color:yellow; border:Black">Green</span> and Happy Diwali!
+</b>
+</DD>
+</dl>
+
+
+<br>
+
+<center>
+<span style="color:White; display: inline-block; background-color:Crimson; border: 2px solid black; font-size:30px; padding:10px">
+DIWALI OFFERS EXPIRE 10TH NOVEMBER 2025! 
+<br>
+REDEEM NOW BEFORE IT IS TOO LATE!
+</span>
+</center>
+</div>
+
+<br>
+
+<div id="HAPPY2">
+<span style="color:Black; display: inline-block; background-color:#99D9EA; border: 2px solid black; font-size:30px; padding:10px; ">
+<center>
+<b style="font-size:35px"> #Offer 3: </b> <span style=" font-family:Rockwell">
+🥳HAPPY 2 WEEKS OF EATOPIA!🥳
+</span>
+</center>
+<br>
+<span style=" font-family:Rockwell">
+To celebrate this glorious event, we have given a bonus code
+<br>
+<center>
+specially for you.
+</center>
+<br>
+<center>
+CODE: 🎉HAPPY14DAYS🎉
+</center>
+<br>
+</span>
+</span>
+
+<dl>
+<dd>
+<b style="color:black; font-family:Verdana; font-size: 30px">
+Get 14% Discount on Orders above ₹250! Valid from 25th October to 7th November 2025.
+</b>
+</dd>
+</dl>
+</div>
+
+<br>
+
+
+<div id="INCREDIBLEINDIA">
+<span style="color:Black; display: inline-block; background-color:Orange; font-size:30px; padding:10px">
+
+<b style="font-size:35px">#Offer 4:</b>
+<span style="font-family:Rockwell">
+<img src="INDIA.png" alt="Jai Hind Jai Bharat" height="40px" width="40px">
+INCREDIBLEINDIA 
+<img src="INDIA.png" alt="Jai Hind Jai Bharat" height="40px" width="40px">
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+</span>
+</span>
+<br>
+<span style="color:Black; display: inline-block; background-color:White; font-size:30px; padding:10px; font-family:Rockwell">
+
+Redeem this code to get 28% Discount on your order if Value is above .
+
+</span>
+<br>
+<span style="color:Black; display: inline-block; background-color:Green; font-size:30px; padding:10px; font-family:Rockwell">
+&nbsp&nbsp&nbsp Limited Time Offer. Valid till 26th November 2025 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+</span>
+</div>
+
+<br>
+<br>
+<br>
+
+<div id="SCHEZWAN">
+<span style="color:black; display: inline-block; background-color:#99D9EA; border: 2px solid black; font-size:30px; padding:10px">
+<b style="font-size:35px">#Offer 5: </b>
+<span style=" font-family:rockwell">
+🔥SchezwanBurger20🔥
+</span>
+</span>
+<dl>
+<dd>
+<b style="color:red; font-family:Verdana; font-size: 25px;text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;">
+
+🔥🔥🔥20% DISCOUNT ON SCHEZWAN ITEMS 🔥🔥🔥
+</b>
+</dl>
+</dd>
+<br>
+
+
+
+
+
+
+</div>
+</div>
+
+<script>
+    const AUTO_CLOSE_DELAY_SECONDS = 1.5; 
+
+    const welcomeOverlay = document.getElementById('welcome-box-overlay');
+    const mainOfferContent = document.getElementById('offer-slide-content');
+    const diwaliTitle = document.getElementById('diwali-slide');
+    const diwaliCodes = document.getElementById('diwali-codes-slide'); 
+
+    const scrollAnimatedElements = [
+        document.getElementById('HAPPY2'),
+        document.getElementById('INCREDIBLEINDIA'),
+        document.getElementById('SCHEZWAN')
+    ].filter(el => el != null); 
+
+    function runInitialSlideIn() {
+        if (mainOfferContent) mainOfferContent.classList.add('slide');
+        
+        if (diwaliTitle) {
+            setTimeout(() => {
+                diwaliTitle.classList.add('slide');
+            }, 200);
+        }
+        
+        if (diwaliCodes) {
+            setTimeout(() => {
+                diwaliCodes.classList.add('slide');
+            }, 400);
+        }
+    }
+
+    function showWelcomeBox() {
+        welcomeOverlay.style.display = 'flex';
+        
+        setTimeout(() => {
+            if (welcomeOverlay.style.display === 'flex') {
+                closeWelcomeBox();
+            }
+        }, AUTO_CLOSE_DELAY_SECONDS * 1000); 
+
+        observeScrollElements();
+    }
+    
+    function closeWelcomeBox() {
+        if (welcomeOverlay.style.display === 'flex') {
+             welcomeOverlay.style.display = 'none';
+             runInitialSlideIn();
+        }
+    }
+    
+    function observeScrollElements() {
+        if (scrollAnimatedElements.length === 0) return;
+        
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('slide');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            rootMargin: '0px', 
+            threshold: 0.05 
+        });
+
+        scrollAnimatedElements.forEach(element => {
+            observer.observe(element);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', showWelcomeBox); 
+    
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape" && welcomeOverlay.style.display === 'flex') {
+            closeWelcomeBox();
+        }
+    });
+</script>
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,1336 @@
+<html>
+<head>
+<title> Eatopia Kitchen</title>
+
+<style>
+H1{font-size:70px;}
+
+.top-bar {background-image:url("d.png"); background-size:cover; background-position:top-center; height:160px; position: relative; padding-top:0; display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; position: fixed; top: 0; left: 0; width: 100%; z-index: 10;}
+
+.task-bar {background-image: url("task bar.png"); background-size: cover; background-position: top-center; height: 100px; display: flex;  justify-content: center; align-items: center; }  
+
+H2{font-size:35px;}
+
+BODY {
+    background-image: linear-gradient(to bottom, #fbf3fd, #f7defd); 
+    background-attachment: fixed; 
+    margin: 0; 
+    padding-top: 160px;
+}
+
+.button-link {
+  text-decoration: none; 
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; 
+  color: white; 
+  border: 1px solid #0056b3;
+  border-radius: 5px; 
+  cursor: pointer; 
+  text-align: center;
+}
+
+.top-bar-image-right {
+    position: absolute; top: 0.25px; right: 10px;       
+    width: 200px; 
+    height: 200px;       
+    object-fit: cover;
+}
+
+#welcome-box-overlay {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); 
+            display: none; 
+             justify-content: center;
+            align-items: center;
+            z-index: 1000; 
+        }
+
+.welcome-modal {background-color: #f0f8ff; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); text-align: center; max-width: 400px; width: 90%; transform: scale(1); transition: transform 0.3s ease-out;}
+
+ .welcome-modal h2 {
+            color: #2c3e50; 
+            margin-top: 0;
+            font-family: sans-serif;
+        }
+
+.welcome-modal p {color: #34495e; font-family: Arial, sans-serif; line-height: 1.5; margin-bottom: 20px;}
+
+.welcome-modal button {background-color: #e74c3c; color: white; border: none; padding:10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.2s;}
+
+.welcome-modal button:hover {background-color: #c0392b; }
+
+.large-submit { 
+    padding: 15px 30px; 
+    font-size: 30px;
+  }
+
+.button-link-menu {
+  text-decoration: none; 
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #097969; 
+  color: white; 
+  border: 1px solid #0056b3;
+  border-radius: 5px; 
+  cursor: pointer; 
+  text-align: center;
+}
+
+.menu-item-row {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 40px auto; 
+    background-color: #333; 
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.menu-image-col {
+    flex: 2; 
+    padding: 10px;
+    text-align: center;
+}
+
+.menu-form-col {
+    flex: 1; 
+    padding: 20px;
+    color: white; 
+    background-color: #555;
+    height: 100%;
+}
+
+.menu-image-col img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+}
+
+.menu-form-col b {
+    display: block; 
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.menu-form-col input[type="text"] {
+    padding: 8px;
+    width: 90%; 
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .menu-item-row {
+        flex-direction: column; 
+        margin: 20px 10px;
+    }
+}
+
+    .menu-image-col, 
+    .menu-form-col {
+        flex: 100%;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .menu-form-col b {
+        font-size: 18px;
+    }
+
+.top-bar-branding { display: fles; align-items: center; gap: 10px;}
+
+input[type="radio"]{ 
+    transform: scale(1.2); 
+    margin-right: 5px; 
+    vertical-align: middle; 
+}
+input[type="checkbox"] { 
+    transform: scale(2.0); 
+    margin-right: 5px; 
+    vertical-align: middle; 
+}
+ input[type="number"]{ 
+    transform: scale(1.5); 
+    margin-right: 5px; 
+    vertical-align: middle; 
+}
+
+
+
+.left-align-span {
+    background-color: #f0f0f0; 
+    display: block; 
+    width: 300px; 
+    padding: 10px; 
+    text-align: left; 
+}
+
+</style>
+
+<script>
+</script>
+
+</head>
+
+<body style="margin:0">
+<div id="welcome-box-overlay">
+        <div class="welcome-modal">
+            <h2>🎉 Welcome to Eatopia Kitchen! 🍽️</h2>
+            <p>
+                Come Order from the World's Top Fast Food Chain's Website: Eatopia.html
+            </p>
+
+            <p>
+           <center style="font-size:30px; color:Crimson; font-family:Verdana"><b>NEW</b></center>
+            <p>
+                A New Desi <b style="font-size:20px">TWIST</b> on your favorite foods. Diwali Special Burgers, Fries and Rolls ,all for you!
+            </p>
+            <button onclick="closeWelcomeBox()">
+               Close 
+            </button>
+        </div>
+    </div>
+
+<script>
+const welcomeOverlay = document.getElementById('welcome-box-overlay');
+        
+function showWelcomeBox() {
+    welcomeOverlay.style.display = 'flex';
+}
+
+function closeWelcomeBox() {
+    welcomeOverlay.style.display = 'none';
+    localStorage.setItem('hasVisited', 'true');
+}
+
+function checkVisitStatus() {
+    const hasVisited = localStorage.getItem('hasVisited');
+    if (!hasVisited) {
+        showWelcomeBox();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', checkVisitStatus); 
+        
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        if (welcomeOverlay.style.display === 'flex') {
+            closeWelcomeBox();
+        }
+    }
+});
+    </script>
+
+<div class="top-bar">
+&nbsp&nbsp&nbsp&nbsp&nbsp
+<div class="top-bar-branding">
+
+<img src="Eatopia Text.png" alt="Eatopia Kitchens" height="150" > 
+
+<img src="EATOPIA.png" alt="Restaurant Logo" height="150px" width="150px" >
+</div>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="index.html" class="button-link"> <span style="font-size:25px; font-family:Rockwell;"> Home </span></a>   
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="MENU.html"  class="button-link"><span style="font-size:25px; font-family:Rockwell;"> Menu </span> </a>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="OFFERS.html" class="button-link"> <span style="font-size:25px; font-family:Rockwell;"> Offers </span></a>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="AboutUs.html" class="button-link"><span style="font-size:25px; font-family:Rockwell;"> About Us</span> </a>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="ContactUs.html" class="button-link"><span style="font-size:25px; font-family:Rockwell;"> Contact Us</span> </a>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<a href="MENU.html#order"  class="button-link"><span style="font-size:25px; font-family:Rockwell;"> Order Completion</span> </a>
+</div>
+
+<br>
+<br>
+
+<div id="top">
+<center>
+
+<a href="#classics" Class="button-link-menu"><span style="font-size:35px; font-family:Rockwell;"> Go To Classics </span></a>
+
+&nbsp &nbsp
+
+<a href="#fries" Class="button-link-menu"><span style="font-size:35px; font-family:Rockwell;"> Move to Fries </span></a>
+
+&nbsp &nbsp
+
+<a href="#beverage" Class="button-link-menu"><span style="font-size:35px; font-family:Rockwell;"> Go To Beverages </span></a>
+
+&nbsp &nbsp
+
+<a href="#dessert" Class="button-link-menu"><span style="font-size:35px; font-family:Rockwell;"> Sweet Desserts </span></a>
+
+<br>
+<br>
+
+<a href="#also" Class="button-link-menu"><span style="font-size:35px; font-family:Rockwell;"> Recommended for You </span></a>
+
+&nbsp &nbsp
+
+<a href="#kathi" Class="button-link-menu"><span style="font-size:35px; font-family:Rockwell;"> Kathi Rolls and Wraps </span></a>
+
+&nbsp &nbsp
+
+<a href="#special" Class="button-link-menu"><span style="font-size:35px; font-family:Rockwell;"> See Our Special Meals </span></a>
+
+</center>
+</div>
+
+<br>
+<br>
+
+
+<form name="EATOPIA ORDER FORM" method="post" action="https://script.google.com/macros/s/AKfycbwsm8zQtRvvmjf5ZnddDbAePLlO5emERDjBHrvcZDRps_mpyGWTop5QdiQgIBTNloA/exec"  id="myForm" onsubmit="return calculateTotal();">
+
+<div id="classics">
+<center>
+<b style="color:White; font-family:Verdana;font-size:50px;background-color:Black;padding:10px">
+Classics
+</b>
+</center>
+</div>
+
+<div class="menu-item-row">
+
+<div class="menu-image-col">
+<center>
+<img src="Veggie.png" alt="Veggie Delight" height="450" width="900">
+</center>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="menu-form-col">
+<center>
+<br>
+<br>
+<br>
+<b style="font-size:30px">Veggie Delight Burger ₹79: </b>
+<input type="checkbox" name="Veggie Delight Burger" value="Yes" onclick="toggleQuantity('Quantity VDB', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp </b>
+<input type="number" name="Quantity VDB" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Veggie Delight Burger')">
+</center>
+<br>
+<br>
+<br>
+</div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="Chicken.png" alt="Chicken Extravaganza"height="450" width="900">
+</center>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="menu-form-col">
+<center>
+<br>
+<br>
+<br>
+<b style="font-size:30px">Chicken Extravaganza Burger ₹79: </b>
+<input type="checkbox" name="Chicken Extravaganza Burger" value="Yes"onclick="toggleQuantity('Quantity CEB', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp </b>
+<input type="number" name="Quantity CEB" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Chicken Extravaganza Burger')">
+</center>
+<br>
+<br>
+<br>
+</div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="DOUBLE.png" alt="Double Patty" height="450" width="900">
+</center>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-form-col">
+<center>
+<br>
+<br>
+<br>
+<b style="font-size:30px">Double Patty Burger ₹99: </b>
+<input type="checkbox" name="Double Patty Burger" value="Yes" onclick="toggleQuantity('Quantity DPB', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity DPB" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Double Patty Burger')">
+<br>
+<br>
+<br>
+</center>
+</div>
+</div>
+
+
+<br>
+<br>
+<br>
+
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="SAMRAT.png" alt="Samrat" height="450" width="900">
+</center>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-form-col">
+<center>
+<br>
+<br>
+<br>
+<b style="font-size:30px">Samrat Burger ₹109: </b>
+<input type="checkbox" name="Samrat Burger" value="Yes" onclick="toggleQuantity('Quantity SB', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity SB" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Samrat Burger')">
+<br>
+<br>
+<br>
+</center>
+</div>
+</div>
+
+
+<div id="fries">
+<center>
+<b style="color:White; font-family:Verdana;font-size:50px;background-color:Black;padding:10px">
+French Fries
+</b>
+</center>
+</div>
+
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+
+<img src="FRIES.png" alt="CLASSIC FRIES" height="450" width="900">
+</center>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="menu-form-col">
+<center>
+<br>
+<br>
+<br>
+<b style="font-size:30px"> Classic French Fries ₹69: </b>
+<input type="checkbox" name="Classic Fries" value="Yes" onclick="toggleQuantity('Quantity CFF', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity CFF" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Classic Fries')">
+<br>
+<br>
+<br>
+</center>
+</div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="Peri.png" alt="Special Fries" height="450" width="900">
+</center>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="menu-form-col">
+<center>
+<b style="font-size:30px"> Cheesy French Fries ₹69: </b>
+<input type="checkbox" name="Cheesy Fries" value="Yes" onclick="toggleQuantity('Quantity ChFF', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity ChFF" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Cheesy Fries')">
+
+</center>
+
+
+<br>
+<br>
+
+<center>
+<b style="font-size:30px"> Peri-Peri French Fries ₹79: </b>
+<input type="checkbox" name="Peri Peri Fries" value="Yes" onclick="toggleQuantity('Quantity PPFF', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity PPFF" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Peri Peri Fries')">
+</center>
+</div>
+</div>
+
+
+
+<div id="beverage">
+<center>
+<b style="color:White; font-family:Verdana;font-size:50px;background-color:Black;padding:10px">
+Beverages
+</b>
+</center>
+
+<center>
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="Coke.png" alt="Coca Cola and Fanta" height="450" width="900">
+</center>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-form-col">
+<b style="font-size:30px"> Coca Cola ₹49: </b>
+<input type="checkbox" name="Coca Cola" value="Yes" onclick="toggleQuantity('Quantity CC', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity CC" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Coca Cola')">
+<br>
+<br>
+<b style="font-size:30px"> Fanta ₹49: </b>
+<input type="checkbox" name="Fanta" value="Yes" onclick="toggleQuantity('Quantity F', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity F" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Fanta')">
+</div>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="Shake.png" alt="Shakes" height="450" width="900">
+</center>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-form-col">
+<b style="font-size:30px"> Vanilla Shake ₹119: </b>
+<input type="checkbox" name="Vanilla Shake" value="Yes" onclick="toggleQuantity('Quantity VS', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity VS" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Vanilla Shake')">
+<br>
+<br>
+<b style="font-size:30px"> Chocolate Shake ₹119: </b>
+<input type="checkbox" name="Chocolate Shake" value="Yes" onclick="toggleQuantity('Quantity CS', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity CS" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Chocolate Shake')">
+</div>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="Coffee.png" alt="Coffee and Tea" height="450" width="900">
+</center>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-form-col">
+<b style="font-size:30px"> Cold Coffee ₹119: </b>
+<input type="checkbox" name="Cold Coffee" value="Yes" onclick="toggleQuantity('Quantity CCF', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity CCF" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Cold Coffee')">
+<br>
+<br>
+<b style="font-size:30px"> Iced Tea ₹119: </b>
+<input type="checkbox" name="Iced Tea" value="Yes" onclick="toggleQuantity('Quantity IT', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity IT" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Iced Tea')">
+<br>
+<br>
+<b style="font-size:30px"> Espresso Coffee ₹119: </b>
+<input type="checkbox" name="Espresso" value="Yes" onclick="toggleQuantity('Quantity E', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity E" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Espresso')">
+</div>
+</div>
+</center>
+
+
+</div>
+
+<div id="dessert">
+<center>
+<b style="color:White; font-family:Verdana;font-size:50px;background-color:Black;padding:10px">
+Desserts
+</b>
+</center>
+</div>
+
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="ICE.png" alt="Ice Cream" height="450" width="900">
+</center>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-form-col">
+<center>
+<b style="font-size:30px"> Vanilla Ice Cream </b>
+<br>
+<b style="font-size:30px"> ⚫ Size Small ₹59: </b>
+<input type="checkbox" name="Small Vanilla Ice Cream" value="Yes" onclick="toggleQuantity('Quantity SVIC', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity SVIC" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Small Vanilla Ice Cream')">
+<br>
+<br>
+<b style="font-size:30px"> ⚫ Size Medium ₹69: </b>
+<input type="checkbox" name="Medium Vanilla Ice Cream" value="Yes" onclick="toggleQuantity('Quantity MVIC', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity MVIC" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Medium Vanilla Ice Cream')">
+<br>
+<br>
+<b style="font-size:30px"> ⚫ Size Large ₹79: </b>
+<input type="checkbox" name="Large Vanilla Ice Cream" value="Yes" onclick="toggleQuantity('Quantity LVIC', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity LVIC" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Large Vanilla Ice Cream')">
+</center>
+</div>
+</div>
+<br>
+<br>
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="ICE.png" alt="Ice Cream" height="450" width="900">
+</center>
+</div>
+<br>
+<br>
+<div class="menu-form-col">
+<center>
+<b style="font-size:30px"> Chocolate Ice Cream </b>
+<br>
+<b style="font-size:30px"> ⚫ Size Small ₹59: </b>
+<input type="checkbox" name="Small Chocolate Ice Cream" value="Yes" onclick="toggleQuantity('Quantity SCIC', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity SCIC" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Small Chocolate Ice Cream')">
+<br>
+<br>
+<b style="font-size:30px"> ⚫ Size Medium ₹69: </b>
+<input type="checkbox" name="Medium Chocolate Ice Cream" value="Yes" onclick="toggleQuantity('Quantity MCIC', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity MCIC" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Medium Chocolate Ice Cream')">
+<br>
+<br>
+<b style="font-size:30px"> ⚫ Size Large ₹79: </b>
+<input type="checkbox" name="Large Chocolate Ice Cream" value="Yes" onclick="toggleQuantity('Quantity LCIC', this.checked)"> 
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity LCIC" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Large Chocolate Ice Cream')">
+</center>
+</div>
+</div>
+<br>
+<br>
+<br>
+
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="Brownie.png" alt="Brownies and Cakes" height="450" width="900">
+</center>
+</div>
+<br>
+<br>
+<br>
+<center>
+<div class="menu-form-col">
+<b style="font-size:30px"> Choco Vesuvius Cake ₹89: </b>
+<input type="checkbox" name="Choco Vesuvius" value="Yes" onclick="toggleQuantity('Quantity CV', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity CV" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Choco Vesuvius')">
+<br>
+<br>
+<b style="font-size:30px"> Chocolate Brownie ₹89: </b>
+<input type="checkbox" name="Chocolate Brownie" value="Yes" onclick="toggleQuantity('Quantity CB', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity CB" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Chocolate Brownie')">
+</div>
+</center>
+</div>
+
+
+</div>
+<div id="also">
+<center>
+<b style="color:White; font-family:Verdana;font-size:50px;background-color:Black;padding:10px">
+Recommended For You
+</b>
+</center>
+
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="Wings.png" alt="Chicken Nuggets and Wings" height="450" width="900">
+<br>
+<br>
+<br>
+</center>
+</div>
+<div class="menu-form-col">
+<center>
+<b style="font-size:30px"> Chicken Nuggets (6pcs per Box) ₹89: </b>
+<input type="checkbox" name="Chicken Nuggets" value="Yes" onclick="toggleQuantity('Quantity CN', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity (of Boxes) in Numbers: &nbsp</b>
+<input type="number" name="Quantity CN" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Chicken Nuggets')">
+<br>
+<br>
+<b style="font-size:30px"> Chicken Wings (6pcs per Box) ₹89: </b>
+<input type="checkbox" name="Chicken Wings" value="Yes" onclick="toggleQuantity('Quantity CW', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity (of Boxes) in Numbers: &nbsp</b>
+<input type="number" name="Quantity CW" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Chicken Wings')">
+</center>
+</div>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="Hash.png" alt="Hash Browns and Waffles" height="450" width="900">
+</center>
+</div>
+<br>
+<br>
+<br>
+<center>
+<div class="menu-form-col">
+<b style="font-size:30px"> Hash Browns ₹49: </b>
+<input type="checkbox" name="Hash Brown" value="Yes" onclick="toggleQuantity('Quantity HB', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity HB" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Hash Brown')">
+<br>
+<br>
+<b style="font-size:30px"> Chocolate Waffles ₹99: </b>
+<input type="checkbox" name="Chocolate Waffles" value="Yes" onclick="toggleQuantity('Quantity WA', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity WA" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Chocolate Waffles')">
+</div>
+</center>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="Pizza.png" alt="Pizza" height="450" width="900">
+</center>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-form-col">
+<center>
+<br>
+<br>
+<br>
+<b style="font-size:30px"> Veggie Cheezy Pizza ₹119: </b>
+<input type="checkbox" name="Veggie Cheezy Pizza" value="Yes" onclick="toggleQuantity('Quantity VCP', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity VCP" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Veggie Cheezy Pizza')">
+<br>
+<br>
+<br>
+</center>
+</div>
+</div>
+</div>
+
+
+<div id="kathi">
+<center>
+<b style="color:White; font-family:Verdana;font-size:50px;background-color:Black;padding:10px">
+Kathi Rolls and Wraps
+</b>
+</center>
+
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="Wraps.png" alt="Kathis for You" height="450" width="900">
+</center>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-form-col">
+<center>
+<b style="font-size:30px"> Chicken Tandoor ₹79: </b>
+<input type="checkbox" name="Chicken Tandoor" value="Yes" onclick="toggleQuantity('Quantity CTN', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity CTN" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20"  oninput="toggleCheckbox(this, 'Chicken Tandoor')">
+<br>
+<br>
+<b style="font-size:30px"> Mutton Kurma ₹79: </b>
+<input type="checkbox" name="Mutton Kurma" value="Yes" onclick="toggleQuantity('Quantity MK', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity MK" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20"  oninput="toggleCheckbox(this, 'Mutton Kurma')">
+<br>
+<br>
+<b style="font-size:30px"> Veggie Roll ₹79: </b>
+<input type="checkbox" name="Veggie Roll" value="Yes" onclick="toggleQuantity('Quantity VR', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity VR" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20"  oninput="toggleCheckbox(this, 'Veggie Roll')">
+<br>
+<br>
+</center>
+</div>
+</div>
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="Mughal.png" alt="Special Kathis" height="450" width="900">
+</center>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-form-col">
+<center>
+<b style="font-size:30px"> Mughlai Roll ₹89: </b>
+<input type="checkbox" name="Mughlai Roll" value="Yes" onclick="toggleQuantity('Quantity MR', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity MR" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20"  oninput="toggleCheckbox(this, 'Mughlai Roll')">
+<br>
+<br>
+<b style="font-size:30px"> Calcutta Special ₹89: </b>
+<input type="checkbox" name="Calcutta Special" value="Yes" onclick="toggleQuantity('Quantity CaS', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity CaS" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20"  oninput="toggleCheckbox(this, 'Calcutta Special')">
+</center>
+</div>
+</div>
+<br>
+</div>
+<div id="special">
+<center>
+<b style="color:White; font-family:Verdana;font-size:50px;background-color:Black;padding:10px">
+Special Meals
+</b>
+<br>
+<br>
+<br>
+<span style="background-color:Black;font-size:50px;padding:10px">
+<b style="color:Orange; font-family:Verdana;">
+Indian
+</b>
+<b style="color:Green; font-family:Verdana;">
+Classics
+</b>
+</span>
+</center>
+
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="Indian.png" alt="Indian Classics"  height="450" width="900">
+</center>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-form-col">
+<center>
+<b style="font-size:30px"> Pav Bhaji ₹119: </b>
+<input type="checkbox" name="Pav Bhaji" value="Yes" onclick="toggleQuantity('Quantity PB', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity PB" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Pav Bhaji')">
+<br>
+<br>
+<b style="font-size:30px"> Chole Bhature ₹119: </b>
+<input type="checkbox" name="Chole Bhature" value="Yes" onclick="toggleQuantity('Quantity CBH', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity CBH" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Chole Bhature')">
+<br>
+<br>
+<b style="font-size:30px"> Vada Pav (2pcs per Box) ₹119: </b>
+<input type="checkbox" name="Vada Pav" value="Yes" onclick="toggleQuantity('Quantity VP', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity (of Boxes) in Numbers: &nbsp</b>
+<input type="number" name="Quantity VP" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Vada Pav')">
+
+</center>
+</div>
+</div>
+
+<center>
+<span style="background-color:Black;font-size:50px;padding:10px">
+<b style="color:Yellow; font-family:Verdana;">
+Our Diwali Line
+</b>
+</span>
+</center>
+
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="Patakha.png" alt="Happy Diwali" height="450" width="900">
+</center>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-form-col">
+<center>
+<b style="font-size:30px"> Makhani Burger ₹109: </b>
+<input type="checkbox" name="Makhani Burger" value="Yes" onclick="toggleQuantity('Quantity MB', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity MB" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Makhani Burger')">
+<br>
+<br>
+<b style="font-size:30px"> Shahi Burger ₹109: </b>
+<input type="checkbox" name="Shahi Burger" value="Yes" onclick="toggleQuantity('Quantity ShB', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity ShB" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Shahi Burger')">
+<br>
+<br>
+<b style="font-size:30px"> Patakhe Da Burger ₹109: </b>
+<input type="checkbox" name="Patakhe Da Burger" value="Yes" onclick="toggleQuantity('Quantity PDB', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity PDB" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Patakhe Da Burger')">
+<br>
+<br>
+<b style="font-size:30px"> Diwali Combo (Patakhe Da Burger, Peri Peri Fries, Iced Coke, Ice Cream) ₹399: </b>
+<input type="checkbox" name="Diwali Combo" value="Yes" onclick="toggleQuantity('Quantity DC', this.checked)">
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity DC" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Diwali Combo')">
+
+<br>
+</center>
+</div>
+</div>
+<center>
+<span style="background-color:Black;font-size:50px;padding:10px">
+<b style="color:Tomato; font-family:Verdana;">
+Welcome to ChinaTown
+</b>
+</span>
+</center>
+<div class="menu-item-row">
+<div class="menu-image-col">
+<center>
+<img src="China.png" alt="Desi Chinese" height="450" width="900">
+</center>
+</div>
+<br>
+<br>
+<br>
+<div class="menu-form-col">
+<center>
+<b style="font-size:30px"> ChinaTown Burger ₹89: </b>
+<input type="checkbox" name="ChinaTown Burger" value="Yes" onclick="toggleQuantity('Quantity CTB', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity CTB" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20"  oninput="toggleCheckbox(this, 'ChinaTown Burger')">
+<br>
+<br>
+<b style="font-size:30px"> Schezwan Fries ₹79: </b>
+<input type="checkbox" name="Schezwan Fries" value="Yes" onclick="toggleQuantity('Quantity SF', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity SF" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20" oninput="toggleCheckbox(this, 'Schezwan Fries')">
+<br>
+<br>
+<b style="font-size:30px"> Honey Chilli Potato ₹89: </b>
+<input type="checkbox" name="Honey Chilli Potato" value="Yes" onclick="toggleQuantity('Quantity HCP', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity HCP" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20"  oninput="toggleCheckbox(this, 'Honey Chilli Potato')">
+<br>
+<br>
+<b style="font-size:30px"> Spring Rolls ₹89: </b>
+<input type="checkbox" name="Spring Rolls" value="Yes" onclick="toggleQuantity('Quantity SPR', this.checked)">
+<br>
+<b style="font-size:30px">&nbsp Quantity in Numbers: &nbsp</b>
+<input type="number" name="Quantity SPR" value="0" min="0" max="99" step="1" style="width:70px" size="25" maxlength="20"  oninput="toggleCheckbox(this, 'Spring Rolls')">
+
+</center>
+</div>
+</div>
+<br>
+<br>
+<br>
+</div>
+<div id="order">
+
+<center>
+<span style="color:White; display: inline-block; background-color:Crimson; border: 2px solid black"><span style="font-size:60px;">
+&nbsp &nbsp &nbspORDER FORM COMPLETION&nbsp &nbsp &nbsp
+</span>
+<br>
+<b style="color:Yellow; font-size:30px">
+Offer Code: 
+</b>
+<br>
+&nbsp &nbsp No Offer &nbsp 
+<input type="radio" name="OfferCode" value="NONE" checked required>
+<br>
+&nbsp &nbsp DIWALIDHAMAKA (10% Off) &nbsp 
+<input type="radio" name="OfferCode" value="DIWALIDHAMAKA" required>
+<br>
+&nbsp &nbsp HAPPY14DAYS (14% Off) &nbsp 
+<input type="radio" name="OfferCode" value="HAPPY14DAYS" required>
+<br>
+&nbsp &nbsp NOPATAKHEDIWALI (20% Off) &nbsp 
+<input type="radio" name="OfferCode" value="NOPATAKHEDIWALI" required>
+<br>
+&nbsp &nbsp INCREDIBLEINDIA (28% Off) &nbsp 
+<input type="radio" name="OfferCode" value="INCREDIBLEINDIA" required>
+<br>
+<span style="font-size:30px; font-family:Verdana;color:Orange;text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;">
+Please Fill these Details to Finish Ordering
+</span>
+<br>
+<span style="font-size:15px">
+Address for Delivery: 
+<input type="text" name="Address1" size="50" maxlength="100" **required** **minlength="10"** placeholder="TowerNo./ HouseNo.">
+<br> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<input type="text" name="Address2" size="50" maxlength="100" **required** **minlength="10"** placeholder="SocietyName/ Sector">
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<input type="text" name="Address3" size="50" maxlength="100" **required** **minlength="10"** placeholder="City/ State">
+<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<input type="text" name="Address4" size="50" maxlength="100" **required** **minlength="10"** placeholder="*PinCode*">
+</span>
+
+<br>
+<br>
+
+<b style="color:Yellow; font-size:30px">
+Payment Details: 
+</b>
+<br>
+
+&nbsp &nbsp Cash On Delivery &nbsp 
+<input type="radio" name="PaymentMode" value="COD" **required**>
+
+<br>
+
+&nbsp &nbsp UPI On Delivery &nbsp 
+<input type="radio" name="PaymentMode" value="UPI" **required**>
+
+<br>
+<br>
+
+<p id="totalCostDisplay" style="font-size:30px; color:Yellow; font-family:Verdana; margin: 15px 0;">
+<br>
+<br>
+    Total Cost: ₹0 <input type="hidden" id="finalTotalCost" name="TotalCost" value="0">
+</p>
+
+<b style="color:Yellow;font-size:20px">
+<input type="submit" name="Order" value="Order" class="large-submit">
+</b>
+&nbsp&nbsp
+<input type="reset" name="Reset" value="Reset" class="large-submit">
+&nbsp 
+</span>
+</center>
+</form>
+</div>
+</center>
+
+<script>
+
+function toggleQuantity(quantityInputName, isChecked) {
+    const form = document.forms['EATOPIA ORDER FORM'];
+    const quantityInput = form.elements[quantityInputName];
+
+    if (quantityInput) {
+        if (isChecked) {
+            if (parseInt(quantityInput.value) < 1) {
+                quantityInput.value = 1;
+            }
+        } else {
+            quantityInput.value = 0;
+        }
+        calculateTotal();
+    }
+}
+
+function toggleCheckbox(quantityInput, checkboxName) {
+    const form = document.forms['EATOPIA ORDER FORM'];
+    const checkbox = form.elements[checkboxName];
+    const quantity = parseInt(quantityInput.value) || 0;
+
+    if (checkbox) {
+        if (quantity > 0) {
+            checkbox.checked = true;
+        } else {
+            checkbox.checked = false;
+        }
+        calculateTotal();
+    }
+}
+
+const prices = {
+    "Veggie Delight Burger": 79,
+    "Chicken Extravaganza Burger": 79,
+    "Double Patty Burger": 99,
+    "Samrat Burger": 109,
+    "Classic Fries": 69,
+    "Cheesy Fries": 69,
+    "Peri Peri Fries": 79,
+    "Coca Cola": 49,
+    "Fanta": 49,
+    "Vanilla Shake": 119,
+    "Chocolate Shake": 119,
+    "Cold Coffee": 119,
+    "Iced Tea": 119,
+    "Espresso": 119,
+    "Small Vanilla Ice Cream": 59,
+    "Medium Vanilla Ice Cream": 69,
+    "Large Vanilla Ice Cream": 79,
+    "Small Chocolate Ice Cream": 59,
+    "Medium Chocolate Ice Cream": 69,
+    "Large Chocolate Ice Cream": 79,
+    "Choco Vesuvius": 89,
+    "Chocolate Brownie": 89,
+    "Chicken Nuggets": 89,
+    "Chicken Wings": 89,
+    "Hash Brown": 49,
+    "Chocolate Waffles": 99,
+    "Veggie Cheezy Pizza": 119,
+    "Chicken Tandoor": 79,
+    "Mutton Kurma": 79,
+    "Veggie Roll": 79,
+    "Mughlai Roll": 89,
+    "Calcutta Special": 89,
+    "Pav Bhaji": 119,
+    "Chole Bhature": 119,
+    "Vada Pav": 119,
+    "Makhani Burger": 109,
+    "Shahi Burger": 109,
+    "Diwali Combo": 399,
+    "Patakhe Da Burger": 109,
+    "ChinaTown Burger": 89,
+    "Schezwan Fries": 79,
+    "Honey Chilli Potato": 89,
+    "Spring Rolls": 89
+};
+    
+const discounts = {
+    "DIWALIDHAMAKA": 0.10, 
+    "NOPATAKHEDIWALI": 0.20, 
+    "HAPPY14DAYS": 0.14,
+    "INCREDIBLEINDIA": 0.28, 
+    "NONE": 0.00
+};
+
+const discountThresholds = {
+    "DIWALIDHAMAKA": 200,    
+    "HAPPY14DAYS": 250,    
+    "NOPATAKHEDIWALI": 750,  
+    "INCREDIBLEINDIA": 1000  
+};
+
+function getQuantityInputName(itemName) {
+    if (itemName === "Veggie Delight Burger") return "Quantity VDB";
+    if (itemName === "Chicken Extravaganza Burger") return "Quantity CEB";
+    if (itemName === "Double Patty Burger") return "Quantity DPB";
+    if (itemName === "Samrat Burger") return "Quantity SB";
+    if (itemName === "Classic Fries") return "Quantity CFF";
+    if (itemName === "Cheesy Fries") return "Quantity ChFF";
+    if (itemName === "Peri Peri Fries") return "Quantity PPFF";
+    if (itemName === "Coca Cola") return "Quantity CC";
+    if (itemName === "Fanta") return "Quantity F";
+    if (itemName === "Vanilla Shake") return "Quantity VS";
+    if (itemName === "Chocolate Shake") return "Quantity CS";
+    if (itemName === "Cold Coffee") return "Quantity CCF";
+    if (itemName === "Iced Tea") return "Quantity IT";
+    if (itemName === "Espresso") return "Quantity E";
+    if (itemName === "Small Vanilla Ice Cream") return "Quantity SVIC";
+    if (itemName === "Medium Vanilla Ice Cream") return "Quantity MVIC";
+    if (itemName === "Large Vanilla Ice Cream") return "Quantity LVIC";
+    if (itemName === "Small Chocolate Ice Cream") return "Quantity SCIC";
+    if (itemName === "Medium Chocolate Ice Cream") return "Quantity MCIC";
+    if (itemName === "Large Chocolate Ice Cream") return "Quantity LCIC";
+    if (itemName === "Choco Vesuvius") return "Quantity CV";
+    if (itemName === "Chocolate Brownie") return "Quantity CB";
+    if (itemName === "Chicken Nuggets") return "Quantity CN";
+    if (itemName === "Chicken Wings") return "Quantity CW";
+    if (itemName === "Hash Brown") return "Quantity HB";
+    if (itemName === "Chocolate Waffles") return "Quantity WA";
+    if (itemName === "Veggie Cheezy Pizza") return "Quantity VCP";
+    if (itemName === "Chicken Tandoor") return "Quantity CTN";
+    if (itemName === "Mutton Kurma") return "Quantity MK";
+    if (itemName === "Veggie Roll") return "Quantity VR";
+    if (itemName === "Mughlai Roll") return "Quantity MR";
+    if (itemName === "Calcutta Special") return "Quantity CS";
+    if (itemName === "Pav Bhaji") return "Quantity PB";
+    if (itemName === "Chole Bhature") return "Quantity CBH";
+    if (itemName === "Vada Pav") return "Quantity VP";
+    if (itemName === "Makhani Burger") return "Quantity MB";
+    if (itemName === "Shahi Burger") return "Quantity ShB";
+    if (itemName === "Patakhe Da Burger") return "Quantity PDB";
+    if (itemName === "Diwali Combo") return "Quantity DC";
+    if (itemName === "ChinaTown Burger") return "Quantity CTB";
+    if (itemName === "Schezwan Fries") return "Quantity SF";
+    if (itemName === "Honey Chilli Potato") return "Quantity HCP";
+    if (itemName === "Spring Rolls") return "Quantity SPR";
+    return "Quantity " + itemName.replace(/\s/g, ''); // Fallback
+}
+
+function calculateTotal() {
+    let subTotal = 0;    
+    const form = document.forms['EATOPIA ORDER FORM'];
+
+    for (const name in prices) {
+        const checkbox = form.elements[name];
+        if (checkbox && checkbox.checked) {
+            const quantityInputName = getQuantityInputName(name);
+            const quantityInput = form.elements[quantityInputName];
+            const quantity = parseInt(quantityInput.value) || 1; 
+            
+            if (quantity > 0) {
+                subTotal += prices[name] * quantity;
+            }
+        }
+    }
+    
+    let finalTotal = subTotal;
+    const selectedOffer = form.elements['OfferCode'].value;
+    const discountRate = discounts[selectedOffer] || 0;
+    
+    if (discountRate > 0) {
+        const requiredMinimum = discountThresholds[selectedOffer] || 0;
+        
+        if (subTotal >= requiredMinimum) {
+            const discountAmount = subTotal * discountRate;
+            finalTotal = subTotal - discountAmount;
+        } else {
+            finalTotal = subTotal;
+        }
+    } 
+    
+    else if (selectedOffer === "NONE") {
+        
+        const schezwanItems = ["ChinaTown Burger", "Schezwan Fries"];
+        let schezwanDiscount = 0;
+
+        for (const name of schezwanItems) {
+            const checkbox = form.elements[name];
+            if (checkbox && checkbox.checked) {
+                const quantityInputName = getQuantityInputName(name);
+                const quantityInput = form.elements[quantityInputName];
+                const quantity = parseInt(quantityInput.value) || 1;
+                
+                if (quantity > 0) {
+                    schezwanDiscount += (prices[name] * quantity) * 0.20; // 20% discount on these items
+                }
+            }
+        }
+        finalTotal = subTotal - schezwanDiscount;
+    }
+
+    document.getElementById('totalCostDisplay').innerText = `Total Cost: ₹${Math.round(finalTotal)}`;
+    document.getElementById('finalTotalCost').value = Math.round(finalTotal);
+
+    return true;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.forms['EATOPIA ORDER FORM'];
+    
+    form.addEventListener('change', calculateTotal);
+    form.addEventListener('input', calculateTotal);
+
+    calculateTotal();
+});
+</script>
+
+</body>
+</html>
+
+
